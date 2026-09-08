@@ -2,7 +2,9 @@ name: Update SEAGM prices
 
 on:
   schedule:
-    - cron: "7,37 * * * *"
+    # Intentionally avoid :00/:30 because GitHub documents higher scheduler load around common times.
+    # This edit also forces GitHub to re-register the cron schedule for this new repository.
+    - cron: "17,47 * * * *"
   workflow_dispatch:
   push:
     branches:
