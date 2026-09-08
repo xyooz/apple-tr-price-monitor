@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="SEAGM Apple 土耳其区礼品卡价格监控" />
+  <title>Apple 土区礼品卡价格监控</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">SEAGM · TURKEY</p>
+        <h1>Apple 土区礼品卡价格监控</h1>
+        <p class="subtitle">每 30 分钟检查一次，统一换算人民币，并比较不同面额的实际单位成本。</p>
+      </div>
+      <a class="buy-button" href="https://www.seagm.com/zh/itunes-gift-card-turkey" target="_blank" rel="noopener">前往 SEAGM</a>
+    </header>
+
+    <section class="status-line" aria-live="polite">
+      <span id="status-dot" class="status-dot"></span>
+      <span id="status-text">正在读取最新数据…</span>
+    </section>
+
+    <section class="metrics" aria-label="价格摘要">
+      <article class="metric-card featured">
+        <span class="metric-label">当前最划算面额</span>
+        <strong id="best-face">—</strong>
+        <small id="best-cost">—</small>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">USD / CNY</span>
+        <strong id="fx-rate">—</strong>
+        <small id="fx-source">—</small>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">监控面额</span>
+        <strong id="product-count">—</strong>
+        <small>自动识别 SEAGM 在售列表</small>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">支付提示</span>
+        <strong>支付宝</strong>
+        <small>支持情况与手续费以结算页为准</small>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>当前价格</h2>
+          <p>推荐优先看“每 100 TRY 成本”，数值越低越划算。</p>
+        </div>
+        <span id="updated-at" class="muted">—</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>面额</th>
+              <th>SEAGM 标价</th>
+              <th>人民币估算</th>
+              <th>每 100 TRY</th>
+              <th>评价</th>
+            </tr>
+          </thead>
+          <tbody id="price-body">
+            <tr><td colspan="5" class="empty">正在加载…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head trend-head">
+        <div>
+          <h2>历史趋势</h2>
+          <p>按人民币单位成本统计，汇率变化也会反映在趋势中。</p>
+        </div>
+        <label class="select-wrap">
+          <span>面额</span>
+          <select id="face-select"></select>
+        </label>
+      </div>
+
+      <div class="trend-stats">
+        <div><span>7 日均价</span><strong id="avg-7">—</strong></div>
+        <div><span>30 日均价</span><strong id="avg-30">—</strong></div>
+        <div><span>历史最低</span><strong id="history-low">—</strong></div>
+      </div>
+
+      <div id="chart" class="chart" role="img" aria-label="价格趋势图">
+        <div class="empty">历史数据积累后将在这里显示趋势</div>
+      </div>
+    </section>
+
+    <footer>
+      <p>人民币金额按公开 USD/CNY 汇率估算，不包含可能存在的支付手续费或渠道汇差。购买前请以 SEAGM 最终结算金额为准。</p>
+      <p><a href="https://github.com/xyooz/apple-tr-price-monitor" target="_blank" rel="noopener">查看 GitHub 项目</a></p>
+    </footer>
+  </main>
+  <script src="app.js" defer></script>
+</body>
+</html>
