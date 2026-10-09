@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "checked_at": "2026-10-09T07:30:33+00:00",
+  "checked_at": "2026-10-09T08:00:39+00:00",
   "source": {
     "name": "SEAGM",
     "url": "https://www.seagm.com/zh/itunes-gift-card-turkey",
@@ -61,24 +61,24 @@
     },
     {
       "face_value_try": 1000,
-      "price_usd": 22.29,
+      "price_usd": 22.28,
       "product_name": "iTunes Gift Card 1000 TL TR",
-      "price_cny": 149.39,
-      "cny_per_100_try": 14.939
+      "price_cny": 149.33,
+      "cny_per_100_try": 14.933
     },
     {
       "face_value_try": 1250,
-      "price_usd": 27.81,
+      "price_usd": 27.8,
       "product_name": "iTunes Gift Card 1250 TL TR",
-      "price_cny": 186.39,
-      "cny_per_100_try": 14.911
+      "price_cny": 186.32,
+      "cny_per_100_try": 14.906
     },
     {
       "face_value_try": 1500,
-      "price_usd": 33.34,
+      "price_usd": 33.33,
       "product_name": "iTunes Gift Card 1500 TL TR",
-      "price_cny": 223.45,
-      "cny_per_100_try": 14.897
+      "price_cny": 223.39,
+      "cny_per_100_try": 14.893
     },
     {
       "face_value_try": 1750,
@@ -89,10 +89,10 @@
     },
     {
       "face_value_try": 2000,
-      "price_usd": 44.45,
+      "price_usd": 44.44,
       "product_name": "iTunes Gift Card 2000 TL TR",
-      "price_cny": 297.92,
-      "cny_per_100_try": 14.896
+      "price_cny": 297.85,
+      "cny_per_100_try": 14.893
     }
   ]
 }
