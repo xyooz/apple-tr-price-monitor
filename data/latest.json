@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "checked_at": "2026-10-29T23:30:39+00:00",
+  "checked_at": "2026-10-30T00:00:47+00:00",
   "source": {
     "name": "SEAGM",
     "url": "https://www.seagm.com/zh/itunes-gift-card-turkey",
@@ -47,52 +47,52 @@
     },
     {
       "face_value_try": 250,
-      "price_usd": 5.52,
+      "price_usd": 5.51,
       "product_name": "iTunes Gift Card 250 TL TR",
-      "price_cny": 36.77,
-      "cny_per_100_try": 14.709
+      "price_cny": 36.71,
+      "cny_per_100_try": 14.682
     },
     {
       "face_value_try": 500,
-      "price_usd": 11.04,
+      "price_usd": 11.03,
       "product_name": "iTunes Gift Card 500 TL TR",
-      "price_cny": 73.54,
-      "cny_per_100_try": 14.709
+      "price_cny": 73.48,
+      "cny_per_100_try": 14.695
     },
     {
       "face_value_try": 1000,
-      "price_usd": 22.05,
+      "price_usd": 22.02,
       "product_name": "iTunes Gift Card 1000 TL TR",
-      "price_cny": 146.89,
-      "cny_per_100_try": 14.689
+      "price_cny": 146.69,
+      "cny_per_100_try": 14.669
     },
     {
       "face_value_try": 1250,
-      "price_usd": 27.51,
+      "price_usd": 27.47,
       "product_name": "iTunes Gift Card 1250 TL TR",
-      "price_cny": 183.26,
-      "cny_per_100_try": 14.661
+      "price_cny": 182.99,
+      "cny_per_100_try": 14.64
     },
     {
       "face_value_try": 1500,
-      "price_usd": 32.98,
+      "price_usd": 32.93,
       "product_name": "iTunes Gift Card 1500 TL TR",
-      "price_cny": 219.7,
-      "cny_per_100_try": 14.647
+      "price_cny": 219.37,
+      "cny_per_100_try": 14.624
     },
     {
       "face_value_try": 1750,
-      "price_usd": 38.48,
+      "price_usd": 38.42,
       "product_name": "iTunes Gift Card 1750 TL TR",
-      "price_cny": 256.34,
-      "cny_per_100_try": 14.648
+      "price_cny": 255.94,
+      "cny_per_100_try": 14.625
     },
     {
       "face_value_try": 2000,
-      "price_usd": 43.97,
+      "price_usd": 43.91,
       "product_name": "iTunes Gift Card 2000 TL TR",
-      "price_cny": 292.91,
-      "cny_per_100_try": 14.646
+      "price_cny": 292.51,
+      "cny_per_100_try": 14.626
     }
   ]
 }
