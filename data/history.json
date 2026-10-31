@@ -182010,6 +182010,78 @@
           "cny_per_100_try": 14.606
         }
       ]
+    },
+    {
+      "checked_at": "2026-10-31T19:30:36+00:00",
+      "usd_cny": 6.6529,
+      "products": [
+        {
+          "face_value_try": 10,
+          "price_usd": 0.23,
+          "price_cny": 1.53,
+          "cny_per_100_try": 15.302
+        },
+        {
+          "face_value_try": 25,
+          "price_usd": 0.57,
+          "price_cny": 3.79,
+          "cny_per_100_try": 15.169
+        },
+        {
+          "face_value_try": 50,
+          "price_usd": 1.14,
+          "price_cny": 7.58,
+          "cny_per_100_try": 15.169
+        },
+        {
+          "face_value_try": 100,
+          "price_usd": 2.21,
+          "price_cny": 14.7,
+          "cny_per_100_try": 14.703
+        },
+        {
+          "face_value_try": 250,
+          "price_usd": 5.51,
+          "price_cny": 36.66,
+          "cny_per_100_try": 14.663
+        },
+        {
+          "face_value_try": 500,
+          "price_usd": 11.03,
+          "price_cny": 73.38,
+          "cny_per_100_try": 14.676
+        },
+        {
+          "face_value_try": 1000,
+          "price_usd": 22.02,
+          "price_cny": 146.5,
+          "cny_per_100_try": 14.65
+        },
+        {
+          "face_value_try": 1250,
+          "price_usd": 27.47,
+          "price_cny": 182.76,
+          "cny_per_100_try": 14.62
+        },
+        {
+          "face_value_try": 1500,
+          "price_usd": 32.93,
+          "price_cny": 219.08,
+          "cny_per_100_try": 14.605
+        },
+        {
+          "face_value_try": 1750,
+          "price_usd": 38.42,
+          "price_cny": 255.6,
+          "cny_per_100_try": 14.606
+        },
+        {
+          "face_value_try": 2000,
+          "price_usd": 43.91,
+          "price_cny": 292.13,
+          "cny_per_100_try": 14.606
+        }
+      ]
     }
   ]
 }
