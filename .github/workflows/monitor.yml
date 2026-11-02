@@ -6,13 +6,13 @@ on:
     paths:
       - "src/**"
       - "tests/**"
-      - "tests/**"
       - ".github/workflows/monitor.yml"
   push:
     branches:
       - main
     paths:
       - "src/**"
+      - "tests/**"
       - "requirements.txt"
       - ".github/workflows/monitor.yml"
 
