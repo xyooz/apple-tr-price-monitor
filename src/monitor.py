@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -50,39 +51,63 @@ def write_json(path: Path, value: Any) -> None:
 
 
 def fetch_html() -> str:
-    response = requests.get(SEAGM_URL, headers=HEADERS, timeout=30)
-    response.raise_for_status()
-    if "iTunes Gift Card" not in response.text:
-        raise RuntimeError("SEAGM 页面返回内容异常，未找到礼品卡标识")
-    return response.text
+    """Retry transient transport and parsing failures without accepting bad snapshots."""
+    errors = []
+    for attempt in range(3):
+        try:
+            response = requests.get(SEAGM_URL, headers=HEADERS, timeout=30)
+            response.raise_for_status()
+            html = response.text
+            if "iTunes Gift Card" not in html:
+                raise RuntimeError("礼品卡标识缺失，可能是反爬或地区页面")
+            # The page may temporarily return a challenge or incomplete product list.
+            parse_products(html)
+            return html
+        except (requests.RequestException, RuntimeError) as exc:
+            errors.append(str(exc))
+            print(f"SEAGM 请求/解析失败 ({attempt + 1}/3): {exc}", flush=True)
+            if attempt < 2:
+                time.sleep(2 ** attempt * 5)
+    raise RuntimeError("SEAGM 连续 3 次采集失败: " + " | ".join(errors))
 
 
 def parse_products(html: str) -> list[dict[str, float | int | str]]:
-    """从页面可见文本提取形如 'iTunes Gift Card 1000 TL TR US$ 22.45' 的商品。"""
+    """Parse each denomination separately; the last USD amount is the sale price.
+
+    Reject mixed-currency pages instead of silently interpreting KRW/CNY as USD.
+    """
     soup = BeautifulSoup(html, "html.parser")
     text = " ".join(soup.stripped_strings)
-
-    pattern = re.compile(
-        r"iTunes\s+Gift\s+Card\s+([\d,]+)\s+TL\s+TR"
-        r".{0,180}?US\$\s*([\d,.]+)",
-        flags=re.IGNORECASE,
+    name_pattern = re.compile(
+        r"iTunes\s+Gift\s+Card\s+([\d,]+)\s+TL\s+TR",
+        re.IGNORECASE,
     )
-
+    names = list(name_pattern.finditer(text))
     products: dict[int, dict[str, float | int | str]] = {}
-    for face_raw, price_raw in pattern.findall(text):
-        face_value = int(face_raw.replace(",", ""))
-        price_usd = float(price_raw.replace(",", ""))
-        if face_value <= 0 or price_usd <= 0:
+    for index, match in enumerate(names):
+        face_value = int(match.group(1).replace(",", ""))
+        end = names[index + 1].start() if index + 1 < len(names) else len(text)
+        segment = text[match.end():min(end, match.end() + 220)]
+        # A product can display both strikethrough list price and discounted price.
+        prices = re.findall(r"US\$\s*([\d,]+(?:\.\d{1,4})?)", segment)
+        if not prices:
+            continue
+        price_usd = float(prices[-1].replace(",", ""))
+        if face_value <= 0 or not (0 < price_usd < face_value):
             continue
         products[face_value] = {
             "face_value_try": face_value,
             "price_usd": round(price_usd, 4),
             "product_name": f"iTunes Gift Card {face_value} TL TR",
         }
-
     result = [products[key] for key in sorted(products)]
     if len(result) < 5:
-        raise RuntimeError(f"SEAGM 价格解析异常，仅识别到 {len(result)} 个面额")
+        sample = re.sub(r"\s+", " ", text[:160])
+        raise RuntimeError(
+            f"SEAGM 价格解析异常，仅识别到 {len(result)} 个面额；"
+            f"商品名称出现 {len(names)} 次，USD 标记出现 {text.count('US$')} 次；"
+            f"页面片段: {sample!r}"
+        )
     return result
 
 

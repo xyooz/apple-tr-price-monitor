@@ -2,11 +2,17 @@ name: Update SEAGM prices
 
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - "src/**"
+      - "tests/**"
+      - ".github/workflows/monitor.yml"
   push:
     branches:
       - main
     paths:
       - "src/**"
+      - "tests/**"
       - "requirements.txt"
       - ".github/workflows/monitor.yml"
 
@@ -36,10 +42,15 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
 
+      - name: Test parser
+        run: python -m unittest discover -s tests -v
+
       - name: Collect prices
+        if: github.event_name != 'pull_request'
         run: python src/monitor.py
 
       - name: Commit updated data
+        if: github.event_name != 'pull_request'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
